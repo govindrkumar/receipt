@@ -17,9 +17,9 @@ export function drawReceipt(p) {
   p.fill(0);
     p.textFont("monospace");
     p.textAlign(p.CENTER, p.TOP);
-    p.textStyle(p.BOLD);
-    p.textSize(28);
-    p.text("NIGHT SIGNALS", w / 2, 30);
+    p.textStyle(p.NORMAL);
+    p.textSize(18);
+    p.text("ARE YOU WINNING, SON?", w / 2, 30);
 
   dashedLine(p, margin, 94, w - margin, 94, 6, 5);
 
