@@ -67,3 +67,18 @@ sign in with your Hack Club account and submit it. The process should be straigh
   Run by <a href="https://cskartikey.dev/">@cskartikey</a> · made with ♥ by teenagers, for teenagers at
   <a href="https://hackclub.com/">Hack Club</a>
 </p>
+
+---
+I created Sysiphus, my home under this project. I had to waste some important time, cause I don't have much knowledge of p5.js. 
+
+Here, is my draw. 
+<p align = "center">
+<img width="384" height="1080" alt="receipt-seed-67" src="https://github.com/user-attachments/assets/3d42d9fa-5ce9-4f78-85d9-d41a1de1c637" />
+  
+---
+  
+**Made with ❤️**
+
+**By Govind**
+</p>
+
