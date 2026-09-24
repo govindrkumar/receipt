@@ -20,6 +20,24 @@ export function drawReceipt(p) {
   p.textStyle(p.BOLD);
   p.textSize(18);
   p.text("THE REMO-WORLD", w / 2, 30);
+  p.text("Sysiphus (Govind)", w/2, 65);
+  p.textSize(12)
+  p.text("Me after learning p5.js and submitting it...",w/2,400);
+// Black dialogue box
+p.fill(0);
+p.noStroke();
+p.rect(15, 850, 330, 60);
+
+// White dialogue text
+p.fill(255);
+p.textAlign(p.CENTER, p.CENTER);
+p.textStyle(p.BOLD);
+p.textSize(12);
+
+p.text("Hack Club : Are you winning, Sergeant?", 170, 870);
+p.text("Govind : Yes, Sir!", 160, 890);
+
+
 
   dashedLine(p, margin, 60, w - margin, 60, 6, 5);
   // Sysiphus
@@ -44,7 +62,12 @@ export function drawReceipt(p) {
     p.line(x + 5, y + 30, x - 35, y + 50)
 
     // boulder
+    p.fill(0);
     p.circle(x+85, y-50, 80);
+    p.fill(255);
+    // Boulder motion lines
+    p.line(x + 25, y - 75, x + 40, y - 75);
+    p.line(x + 20, y - 60, x + 35, y - 60);
 
     // mountain
     // It will require me to add...multiple chain of lines
@@ -73,22 +96,102 @@ export function drawReceipt(p) {
 
   // Home Sweet home.....
   // My home... of course. 
-  function myhome(p, x, y){
-    p.rect(x-50, y, 200, 80);
-    p.rect(x - 50, y - 80, 200, 80);
-    p.rect(x - 50, y - 160, 200, 80);
-    p.rect(x-50, y - 160, 66.6, 80);
-    p.rect(x + 10, y - 80,66.6, 80 );
-    p.rect(x-50, y - 160, 66.6, 80);
-    p.rect(x + 10, y - 160,66.6, 80 );
-    p.rect(x-50, y, 66.6, 80);
-    p.rect(x + 10, y,66.6, 80);
+  function myhome(p, x, y) {
+      p.push();
+
+      // HOUSE WALLS
+      p.stroke(40);
+      p.strokeWeight(4);
+      p.fill(255, 239, 210);
+
+      p.rect(x - 50, y - 160, 200, 240);
+
+      // ROOF
+      p.fill(180, 55, 45);
+      p.triangle(
+          x - 65, y - 160,
+          x + 50, y - 240,
+          x + 165, y - 160
+      );
+
+      // ROOF BASE
+      p.fill(130, 40, 35);
+      p.rect(x - 65, y - 165, 230, 8);
+
+      // CHIMNEY
+      p.fill(120, 80, 60);
+      p.rect(x + 100, y - 230, 25, 70);
+      p.rect(x + 95, y - 240, 35, 12);
+
+      // FLOOR DIVIDERS
+      p.stroke(70);
+      p.strokeWeight(3);
+      p.line(x - 50, y - 80, x + 150, y - 80);
+      p.line(x - 50, y, x + 150, y);
+
+      // WINDOWS - TOP FLOOR
+      p.fill(135, 206, 235);
+      p.stroke(50);
+      p.strokeWeight(4);
+
+      p.rect(x - 30, y - 145, 45, 45);
+      p.rect(x + 75, y - 145, 45, 45);
+
+      // WINDOW PANES
+      p.strokeWeight(2);
+      p.line(x - 7, y - 145, x - 7, y - 100);
+      p.line(x + 98, y - 145, x + 98, y - 100);
+      p.line(x - 30, y - 122, x + 15, y - 122);
+      p.line(x + 75, y - 122, x + 120, y - 122);
+
+      // WINDOWS - MIDDLE FLOOR
+      p.strokeWeight(4);
+      p.rect(x - 30, y - 65, 45, 45);
+      p.rect(x + 75, y - 65, 45, 45);
+
+      p.strokeWeight(2);
+      p.line(x - 7, y - 65, x - 7, y - 20);
+      p.line(x + 98, y - 65, x + 98, y - 20);
+      p.line(x - 30, y - 42, x + 15, y - 42);
+      p.line(x + 75, y - 42, x + 120, y - 42);
+
+      // FRONT DOOR
+      p.strokeWeight(4);
+      p.fill(120, 70, 35);
+      p.rect(x + 25, y + 15, 50, 65);
+
+      // DOOR HANDLE
+      p.fill(255, 210, 80);
+      p.circle(x + 65, y + 50, 7);
+
+      // PATHWAY
+      p.noStroke();
+      p.fill(190);
+      p.rect(x + 35, y + 80, 30, 35);
+
+      // GROUND
+      p.fill(80, 170, 80);
+      p.rect(x - 100, y + 110, 300, 12);
+
+      // BUSHES
+      p.fill(40, 130, 60);
+      p.circle(x - 75, y + 75, 45);
+      p.circle(x - 55, y + 75, 45);
+      p.circle(x + 155, y + 75, 45);
+      p.circle(x + 175, y + 75, 45);
+
+      p.pop();
+  }
+
+  function draw() {
+      background(135, 206, 235);
+      myhome(this, 200, 280);
   }
 
   p.stroke(0);
   p.fill(255);
   p.strokeWeight(3);
-  myhome(p, 130, 600);
+  myhome(p, 130, 700);
 
 
   dashedLine(p, margin, 930, w - margin, 930, 6, 5);
