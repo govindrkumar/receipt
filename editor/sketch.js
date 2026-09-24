@@ -205,7 +205,8 @@ p.text("Govind : Yes, Sir!", 160, 890);
   p.textAlign(p.CENTER, p.TOP);
   p.textStyle(p.NORMAL);
   p.textSize(10);
-  p.text(barcodeValue, w / 2, 1024);
+  p.text(barcodeValue, w / 2, 1036);
+  p.text("Made with ❤️ By Govind",w/2,1024);
 }
 
 function drawBarcode(p, value, centerX, y) {
