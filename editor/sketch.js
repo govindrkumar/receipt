@@ -15,65 +15,81 @@ export function drawReceipt(p) {
   // Header
   p.noStroke();
   p.fill(0);
-    p.textFont("monospace");
-    p.textAlign(p.CENTER, p.TOP);
-    p.textStyle(p.NORMAL);
-    p.textSize(18);
-    p.text("ARE YOU WINNING, SON?", w / 2, 30);
+  p.textFont("monospace");
+  p.textAlign(p.CENTER, p.TOP);
+  p.textStyle(p.BOLD);
+  p.textSize(18);
+  p.text("THE REMO-WORLD", w / 2, 30);
 
-  dashedLine(p, margin, 94, w - margin, 94, 6, 5);
+  dashedLine(p, margin, 60, w - margin, 60, 6, 5);
+  // Sysiphus
+  function drawSysiphus(p,x,y){
+    // Head
+    p.circle(x, y - 50, 25);
+    // Body
+    p.line(x,y-35, x - 10, y + 20);
 
-  // A seeded field of tiny stars and radio noise.
-  for (let i = 0; i < 150; i += 1) {
-    const x = p.random(margin, w - margin);
-    const y = p.random(118, 350);
-    const size = p.random([1, 1, 1, 2, 2, 3]);
-    if (p.random() > 0.82) {
-      p.rect(x - 3, y, 7, 1);
-      p.rect(x, y - 3, 1, 7);
-    } else {
-      p.rect(x, y, size, size);
-    }
-  }
+    // hands
+    // first-hand
+    p.line(x, y - 25, x + 20, y - 40);
+    p.line(x+20, y - 40, x + 45, y - 50);
+    // second-hand
+    p.line(x-3,y-15, x+20, y - 30);
+    p.line(x+20, y - 30, x+45, y - 40 );
 
-  // Layered mountain signals. p.noise() and p.random() are both seeded.
-  const ridgeTop = 300;
-  for (let layer = 0; layer < 5; layer += 1) {
-    p.fill(layer % 2 === 0 ? 0 : 255);
-    p.stroke(0);
+    // legs
+    p.line(x-10, y + 20, x - 30, y + 35);
+    p.line(x-30, y + 35, x-45, y + 50);
+    p.line(x - 10, y + 20, x + 5, y + 30);
+    p.line(x + 5, y + 30, x - 35, y + 50)
+
+    // boulder
+    p.circle(x+85, y-50, 80);
+
+    // mountain
+    // It will require me to add...multiple chain of lines
+    p.line(x-45, y + 50, x + 10, y + 40 );
+    p.line(x + 10, y + 40, x + 30, y + 30 );
+    p.line(x+30, y + 30, x + 90, y-8);
+    p.line(x+120, y - 30, x + 150, y - 50);
+    p.line(x + 150, y - 50, x + 190, y - 100);
+    p.line(x + 190, y - 100, x + 220, y - 150);
+    p.line(x + 220, y - 150, x + 230, y -170 );
+    p.line(x+230, y - 170, x + 240, y - 175);
+    p.line(x - 45, y + 50, x - 60, y + 60);
+    p.line(x - 60, y + 60, x - 80, y + 80);
+    p.line(x - 80, y + 80, x - 120, y + 110);
+    p.line(x - 120, y + 110, x - 130, y +130);
+    p.line(x-130, y + 130, x - 160, y + 120);
     p.strokeWeight(2);
-    p.beginShape();
-    p.vertex(margin, 500 + layer * 48);
-    for (let x = margin; x <= w - margin; x += 5) {
-      const wave = p.noise(x * 0.012, layer * 4.2) * 90;
-      const y = ridgeTop + layer * 50 - wave;
-      p.vertex(x, y);
-    }
-    p.vertex(w - margin, 500 + layer * 48);
-    p.endShape(p.CLOSE);
+    p.line(x-150, y + 130, x + 250, y + 130);
   }
-
-  // The transmission: a winding route with little station markers.
-  p.noFill();
+  
+  // Draw Sisyphus on top of the mountains
   p.stroke(0);
-  p.strokeWeight(5);
-  p.beginShape();
-  const route = [];
-  for (let y = 585; y < 915; y += 34) {
-    const x = p.map(p.noise(y * 0.018, 20), 0, 1, 68, w - 68);
-    route.push({ x, y });
-    p.vertex(x, y);
-  }
-  p.endShape();
-
-  p.strokeWeight(2);
   p.fill(255);
-  route.forEach(({ x, y }, index) => {
-    if (index % 2 === 0) {
-      p.square(x - 6, y - 6, 12);
-      p.line(index % 4 === 0 ? margin : w - margin, y, x, y);
-    }
-  });
+  p.strokeWeight(3);
+  drawSysiphus(p, 150, 250);
+
+  // Home Sweet home.....
+  // My home... of course. 
+  function myhome(p, x, y){
+    p.rect(x-50, y, 200, 80);
+    p.rect(x - 50, y - 80, 200, 80);
+    p.rect(x - 50, y - 160, 200, 80);
+    p.rect(x-50, y - 160, 66.6, 80);
+    p.rect(x + 10, y - 80,66.6, 80 );
+    p.rect(x-50, y - 160, 66.6, 80);
+    p.rect(x + 10, y - 160,66.6, 80 );
+    p.rect(x-50, y, 66.6, 80);
+    p.rect(x + 10, y,66.6, 80);
+  }
+
+  p.stroke(0);
+  p.fill(255);
+  p.strokeWeight(3);
+  myhome(p, 130, 600);
+
 
   dashedLine(p, margin, 930, w - margin, 930, 6, 5);
 
